@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
             return $user->hasAnyRole(['Admin', 'Petugas']);
         });
 
-        // Soal 4: daftarkan PeminjamanPolicy secara eksplisit.
+       // Soal 4: daftarkan PeminjamanPolicy secara eksplisit.
         Gate::policy(Peminjaman::class, PeminjamanPolicy::class);
     }
 }
