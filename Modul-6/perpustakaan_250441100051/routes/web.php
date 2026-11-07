@@ -63,7 +63,7 @@ Route::get('/kelola-buku', function () {
     $kelola = true;
 
     return view('buku.index', compact('kategoris', 'buku', 'kelola'));
-})->middleware(['auth', 'permission:kelola data buku'])
+})->middleware(['auth', 'can:kelola-buku'])
     ->name('buku.kelola');
 
 Route::get('/buku/{id}', function ($id) {

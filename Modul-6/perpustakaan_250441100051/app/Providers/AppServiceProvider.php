@@ -22,8 +22,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Soal 3: Gate terpusat untuk pengelolaan buku.
-        // Hanya role Admin dan Petugas yang diizinkan.
         Gate::define('kelola-buku', function ($user) {
             return $user->hasAnyRole(['Admin', 'Petugas']);
         });

@@ -14,7 +14,7 @@ Route::middleware(['web', 'auth', 'permission:lihat daftar buku'])->group(functi
 });
 
 
-Route::middleware(['web', 'auth', 'permission:kelola data buku'])->group(function () {
+Route::middleware(['web', 'auth', 'can:kelola-buku'])->group(function () {
     Route::post('/buku', [BukuController::class, 'store'])
         ->name('api.buku.store');
 
