@@ -160,9 +160,6 @@ Route::get('/siswa/riwayat-peminjaman/{anggota}', [RiwayatPeminjamanController::
 Route::get('/buku-cari', [BukuController::class, 'cari'])
     ->middleware('auth');
 
-Route::get('/buku/{buku}/hapus', [BukuController::class, 'destroy'])
-    ->middleware('auth');
-
 Route::get('/peminjaman/{id}', [DetailPeminjamanController::class, 'show'])
     ->middleware('auth');
     

@@ -39,13 +39,11 @@ class BukuController extends Controller
         ]);
     }
 
-    // Soal 1 - A2 (rentan): DB::select dengan string digabung manual
-    // Soal 2 (b) - diperbaiki: query dengan parameter binding
     public function cari(Request $request)
     {
         $judul = $request->query('judul');
 
-        $hasil = DB::select("SELECT * FROM bukus WHERE judul = '$judul'");
+        $hasil = DB::select('SELECT * FROM bukus WHERE judul = ?', [$judul]);
 
         return response()->json($hasil);
     }

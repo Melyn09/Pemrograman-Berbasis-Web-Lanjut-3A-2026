@@ -7,18 +7,13 @@ use App\Models\User;
 
 class PeminjamanPolicy
 {
-    /**
-     * Soal 4: Admin dan Petugas boleh melihat semua peminjaman.
-     * Siswa hanya boleh melihat peminjaman miliknya sendiri
-     * (dicocokkan lewat relasi User -> Anggota berdasarkan email).
-     */
     public function view(User $user, Peminjaman $peminjaman): bool
     {
-        if ($user->hasAnyRole(['Admin', 'Petugas'])) {
+        if ($user->hasRole('Admin') || $user->hasRole('Petugas')) {
             return true;
         }
 
-        return $user->anggota !== null
-            && $user->anggota->id === $peminjaman->anggota_id;
+        return $user->hasRole('Siswa')
+            && $user->anggota?->id == $peminjaman->anggota_id;
     }
 }

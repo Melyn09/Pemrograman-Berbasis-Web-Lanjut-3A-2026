@@ -77,15 +77,6 @@
             aria-live="polite"
         ></p>
 
-        {{-- Soal 1 - A1 (rentan): {!! $item->judul !!} tanpa escaping --}}
-        {{-- Soal 2 (a) - diperbaiki: {{ $item->judul }} dengan Blade escaping --}}
-        <h3>Judul Buku (render server-side)</h3>
-        <ul class="book-list-ssr">
-            @foreach ($buku as $item)
-                <li>{!! $item->judul !!}</li>
-            @endforeach
-        </ul>
-
         <form id="form-pencarian" class="search-form">
             <input
                 type="text"
